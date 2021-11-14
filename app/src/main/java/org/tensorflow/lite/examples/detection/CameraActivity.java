@@ -64,9 +64,10 @@ public abstract class CameraActivity extends AppCompatActivity
 
   private static final String PERMISSION_CAMERA = Manifest.permission.CAMERA;
 
-  private static final String PERMISSION_STORAGE = Manifest.permission.MANAGE_EXTERNAL_STORAGE;
   private static final String PERMISSION_STORAGE2 = Manifest.permission.READ_EXTERNAL_STORAGE;
   private static final String PERMISSION_STORAGE3 = Manifest.permission.WRITE_EXTERNAL_STORAGE;
+
+  private static final String PERMISSION_PHONE = Manifest.permission.READ_PHONE_STATE;
 
   protected int previewWidth = 0;
   protected int previewHeight = 0;
@@ -103,9 +104,12 @@ public abstract class CameraActivity extends AppCompatActivity
     getSupportActionBar().setDisplayShowTitleEnabled(false);
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-      requestPermissions(new String[] {PERMISSION_STORAGE,
+      requestPermissions(new String[] {
+              PERMISSION_CAMERA,
               PERMISSION_STORAGE2,
-              PERMISSION_STORAGE3}, 2);
+              PERMISSION_STORAGE3,
+              PERMISSION_PHONE
+      }, 2);
     }
 
     if (hasPermission()) {
